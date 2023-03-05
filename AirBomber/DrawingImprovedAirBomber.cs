@@ -20,7 +20,7 @@ namespace AirBomber
         /// <param name="dopColor">Дополнительный цвет бомбардировщика</param>
         /// <param name="fuelTanks">Признак наличия дополнительных топливных баков</param>
         /// <param name="bombs">Признак наличия бомб</param>
-        public DrawingImprovedAirBomber(int speed, float weight, Color bodyColor, Color dopColor, bool fuelTanks, bool bombs) : base(speed, weight, bodyColor, 110, 60)
+        public DrawingImprovedAirBomber(int speed, float weight, Color bodyColor, Color dopColor, bool fuelTanks, bool bombs) : base(speed, weight, bodyColor, 100, 100)
         {
             AirBomber = new EntityImprovedAirBomber(speed, weight, bodyColor, dopColor, fuelTanks, bombs);
         }

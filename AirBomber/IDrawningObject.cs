@@ -27,7 +27,7 @@ namespace AirBomber
         /// Изменение направления пермещения объекта
         /// </summary>
         /// <param name="direction">Направление</param>
-        void MoveObject(Direction direction);
+        void MoveObject(Direction direction, int [,] _map);
         /// <summary>
         /// Отрисовка объекта
         /// </summary>

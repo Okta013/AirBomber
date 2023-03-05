@@ -136,6 +136,7 @@
             // 
             // buttonCreateModif
             // 
+            buttonCreateModif.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
             buttonCreateModif.Location = new Point(93, 404);
             buttonCreateModif.Name = "buttonCreateModif";
             buttonCreateModif.Size = new Size(100, 23);
@@ -148,7 +149,7 @@
             // 
             comboBoxSelectorMap.DropDownStyle = ComboBoxStyle.DropDownList;
             comboBoxSelectorMap.FormattingEnabled = true;
-            comboBoxSelectorMap.Items.AddRange(new object[] { "Простая карта" });
+            comboBoxSelectorMap.Items.AddRange(new object[] { "Простая карта", "Улучшенная карта" });
             comboBoxSelectorMap.Location = new Point(12, 12);
             comboBoxSelectorMap.Name = "comboBoxSelectorMap";
             comboBoxSelectorMap.Size = new Size(121, 23);

@@ -28,148 +28,178 @@
         /// </summary>
         private void InitializeComponent()
         {
-            statusStrip1 = new StatusStrip();
-            toolStripStatusLabelSpeed = new ToolStripStatusLabel();
-            toolStripStatusLabelWeight = new ToolStripStatusLabel();
-            toolStripStatusLabelBodyColor = new ToolStripStatusLabel();
-            pictureBoxAirBomber = new PictureBox();
-            buttonCreate = new Button();
-            buttonUp = new Button();
-            buttonLeft = new Button();
-            buttonDown = new Button();
-            buttonRight = new Button();
-            buttonCreateModif = new Button();
-            statusStrip1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxAirBomber).BeginInit();
-            SuspendLayout();
+            this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.toolStripStatusLabelSpeed = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabelWeight = new System.Windows.Forms.ToolStripStatusLabel();
+            this.toolStripStatusLabelBodyColor = new System.Windows.Forms.ToolStripStatusLabel();
+            this.pictureBoxAirBomber = new System.Windows.Forms.PictureBox();
+            this.buttonCreate = new System.Windows.Forms.Button();
+            this.buttonUp = new System.Windows.Forms.Button();
+            this.buttonLeft = new System.Windows.Forms.Button();
+            this.buttonDown = new System.Windows.Forms.Button();
+            this.buttonRight = new System.Windows.Forms.Button();
+            this.buttonCreateModif = new System.Windows.Forms.Button();
+            this.comboBoxSelectorMap = new System.Windows.Forms.ComboBox();
+            this.statusStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAirBomber)).BeginInit();
+            this.SuspendLayout();
             // 
             // statusStrip1
             // 
-            statusStrip1.Items.AddRange(new ToolStripItem[] { toolStripStatusLabelSpeed, toolStripStatusLabelWeight, toolStripStatusLabelBodyColor });
-            statusStrip1.Location = new Point(0, 439);
-            statusStrip1.Name = "statusStrip1";
-            statusStrip1.Size = new Size(884, 22);
-            statusStrip1.TabIndex = 0;
-            statusStrip1.Text = "statusStrip1";
+            this.statusStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripStatusLabelSpeed,
+            this.toolStripStatusLabelWeight,
+            this.toolStripStatusLabelBodyColor});
+            this.statusStrip1.Location = new System.Drawing.Point(0, 439);
+            this.statusStrip1.Name = "statusStrip1";
+            this.statusStrip1.Size = new System.Drawing.Size(884, 22);
+            this.statusStrip1.TabIndex = 0;
+            this.statusStrip1.Text = "statusStrip1";
             // 
             // toolStripStatusLabelSpeed
             // 
-            toolStripStatusLabelSpeed.Name = "toolStripStatusLabelSpeed";
-            toolStripStatusLabelSpeed.Size = new Size(62, 17);
-            toolStripStatusLabelSpeed.Text = "Скорость:";
+            this.toolStripStatusLabelSpeed.Name = "toolStripStatusLabelSpeed";
+            this.toolStripStatusLabelSpeed.Size = new System.Drawing.Size(62, 17);
+            this.toolStripStatusLabelSpeed.Text = "Скорость:";
             // 
             // toolStripStatusLabelWeight
             // 
-            toolStripStatusLabelWeight.Name = "toolStripStatusLabelWeight";
-            toolStripStatusLabelWeight.Size = new Size(29, 17);
-            toolStripStatusLabelWeight.Text = "Вес:";
+            this.toolStripStatusLabelWeight.Name = "toolStripStatusLabelWeight";
+            this.toolStripStatusLabelWeight.Size = new System.Drawing.Size(29, 17);
+            this.toolStripStatusLabelWeight.Text = "Вес:";
             // 
             // toolStripStatusLabelBodyColor
             // 
-            toolStripStatusLabelBodyColor.Name = "toolStripStatusLabelBodyColor";
-            toolStripStatusLabelBodyColor.Size = new Size(36, 17);
-            toolStripStatusLabelBodyColor.Text = "Цвет:";
+            this.toolStripStatusLabelBodyColor.Name = "toolStripStatusLabelBodyColor";
+            this.toolStripStatusLabelBodyColor.Size = new System.Drawing.Size(36, 17);
+            this.toolStripStatusLabelBodyColor.Text = "Цвет:";
             // 
             // pictureBoxAirBomber
             // 
-            pictureBoxAirBomber.Dock = DockStyle.Fill;
-            pictureBoxAirBomber.Location = new Point(0, 0);
-            pictureBoxAirBomber.Name = "pictureBoxAirBomber";
-            pictureBoxAirBomber.Size = new Size(884, 439);
-            pictureBoxAirBomber.SizeMode = PictureBoxSizeMode.AutoSize;
-            pictureBoxAirBomber.TabIndex = 1;
-            pictureBoxAirBomber.TabStop = false;
+            this.pictureBoxAirBomber.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pictureBoxAirBomber.Location = new System.Drawing.Point(0, 0);
+            this.pictureBoxAirBomber.Name = "pictureBoxAirBomber";
+            this.pictureBoxAirBomber.Size = new System.Drawing.Size(884, 439);
+            this.pictureBoxAirBomber.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.pictureBoxAirBomber.TabIndex = 1;
+            this.pictureBoxAirBomber.TabStop = false;
             // 
             // buttonCreate
             // 
-            buttonCreate.Anchor = AnchorStyles.Bottom | AnchorStyles.Left;
-            buttonCreate.Location = new Point(12, 404);
-            buttonCreate.Name = "buttonCreate";
-            buttonCreate.Size = new Size(75, 23);
-            buttonCreate.TabIndex = 2;
-            buttonCreate.Text = "Создать";
-            buttonCreate.UseVisualStyleBackColor = true;
-            buttonCreate.Click += ButtonCreate_Click;
+            this.buttonCreate.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.buttonCreate.Location = new System.Drawing.Point(12, 404);
+            this.buttonCreate.Name = "buttonCreate";
+            this.buttonCreate.Size = new System.Drawing.Size(75, 23);
+            this.buttonCreate.TabIndex = 2;
+            this.buttonCreate.Text = "Создать";
+            this.buttonCreate.UseVisualStyleBackColor = true;
+            this.buttonCreate.Click += ButtonCreate_Click;
             // 
             // buttonUp
             // 
-            buttonUp.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            buttonUp.BackgroundImage = Properties.Resources.up;
-            buttonUp.BackgroundImageLayout = ImageLayout.Zoom;
-            buttonUp.Location = new Point(806, 368);
-            buttonUp.Name = "buttonUp";
-            buttonUp.Size = new Size(30, 30);
-            buttonUp.TabIndex = 3;
-            buttonUp.UseVisualStyleBackColor = true;
-            buttonUp.Click += ButtonMove_Click;
+            this.buttonUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonUp.BackgroundImage = global::AirBomber.Properties.Resources.up;
+            this.buttonUp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonUp.Location = new System.Drawing.Point(806, 368);
+            this.buttonUp.Name = "buttonUp";
+            this.buttonUp.Size = new System.Drawing.Size(30, 30);
+            this.buttonUp.TabIndex = 3;
+            this.buttonUp.UseVisualStyleBackColor = true;
+            this.buttonUp.Click += ButtonMove_Click;
             // 
             // buttonLeft
             // 
-            buttonLeft.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            buttonLeft.BackgroundImage = Properties.Resources.left;
-            buttonLeft.BackgroundImageLayout = ImageLayout.Zoom;
-            buttonLeft.Location = new Point(770, 404);
-            buttonLeft.Name = "buttonLeft";
-            buttonLeft.Size = new Size(30, 30);
-            buttonLeft.TabIndex = 4;
-            buttonLeft.UseVisualStyleBackColor = true;
-            buttonLeft.Click += ButtonMove_Click;
+            this.buttonLeft.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonLeft.BackgroundImage = global::AirBomber.Properties.Resources.left;
+            this.buttonLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonLeft.Location = new System.Drawing.Point(770, 404);
+            this.buttonLeft.Name = "buttonLeft";
+            this.buttonLeft.Size = new System.Drawing.Size(30, 30);
+            this.buttonLeft.TabIndex = 4;
+            this.buttonLeft.UseVisualStyleBackColor = true;
+            this.buttonLeft.Click += ButtonMove_Click;
             // 
             // buttonDown
             // 
-            buttonDown.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            buttonDown.BackgroundImage = Properties.Resources.down;
-            buttonDown.BackgroundImageLayout = ImageLayout.Zoom;
-            buttonDown.Location = new Point(806, 404);
-            buttonDown.Name = "buttonDown";
-            buttonDown.Size = new Size(30, 30);
-            buttonDown.TabIndex = 5;
-            buttonDown.UseVisualStyleBackColor = true;
-            buttonDown.Click += ButtonMove_Click;
+            this.buttonDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonDown.BackgroundImage = global::AirBomber.Properties.Resources.down;
+            this.buttonDown.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonDown.Location = new System.Drawing.Point(806, 404);
+            this.buttonDown.Name = "buttonDown";
+            this.buttonDown.Size = new System.Drawing.Size(30, 30);
+            this.buttonDown.TabIndex = 5;
+            this.buttonDown.UseVisualStyleBackColor = true;
+            this.buttonDown.Click += ButtonMove_Click;
             // 
             // buttonRight
             // 
-            buttonRight.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
-            buttonRight.BackgroundImage = Properties.Resources.right;
-            buttonRight.BackgroundImageLayout = ImageLayout.Zoom;
-            buttonRight.Location = new Point(842, 404);
-            buttonRight.Name = "buttonRight";
-            buttonRight.Size = new Size(30, 30);
-            buttonRight.TabIndex = 6;
-            buttonRight.UseVisualStyleBackColor = true;
-            buttonRight.Click += ButtonMove_Click;
+            this.buttonRight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.buttonRight.BackgroundImage = global::AirBomber.Properties.Resources.right;
+            this.buttonRight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
+            this.buttonRight.Location = new System.Drawing.Point(842, 404);
+            this.buttonRight.Name = "buttonRight";
+            this.buttonRight.Size = new System.Drawing.Size(30, 30);
+            this.buttonRight.TabIndex = 6;
+            this.buttonRight.UseVisualStyleBackColor = true;
+            this.buttonRight.Click += ButtonMove_Click;
             // 
             // buttonCreateModif
             // 
-            buttonCreateModif.Location = new Point(93, 404);
-            buttonCreateModif.Name = "buttonCreateModif";
-            buttonCreateModif.Size = new Size(100, 23);
-            buttonCreateModif.TabIndex = 7;
-            buttonCreateModif.Text = "Модификация";
-            buttonCreateModif.UseVisualStyleBackColor = true;
-            buttonCreateModif.Click += ButtonCreateModif_Click;
+            this.buttonCreateModif.Anchor = AnchorStyles.Left | AnchorStyles.Bottom;
+            this.buttonCreateModif.Location = new System.Drawing.Point(93, 404);
+            this.buttonCreateModif.Name = "buttonCreateModif";
+            this.buttonCreateModif.Size = new System.Drawing.Size(100, 23);
+            this.buttonCreateModif.TabIndex = 7;
+            this.buttonCreateModif.Text = "Модификация";
+            this.buttonCreateModif.UseVisualStyleBackColor = true;
+            this.buttonCreateModif.Click += ButtonCreateModif_Click;
+            // 
+            // comboBoxSelectorMap
+            // 
+            this.comboBoxSelectorMap.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxSelectorMap.FormattingEnabled = true;
+            this.comboBoxSelectorMap.Items.AddRange(new object[] {
+            "Простая карта",
+            "Улучшенная карта"});
+            this.comboBoxSelectorMap.Location = new System.Drawing.Point(12, 12);
+            this.comboBoxSelectorMap.Name = "comboBoxSelectorMap";
+            this.comboBoxSelectorMap.Size = new System.Drawing.Size(121, 23);
+            this.comboBoxSelectorMap.TabIndex = 9;
+            this.comboBoxSelectorMap.SelectedIndexChanged += new System.EventHandler(this.ComboBoxSelectorMap_SelectedIndexChanged);
             // 
             // FormAirBomber
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(884, 461);
-            Controls.Add(buttonCreateModif);
-            Controls.Add(buttonRight);
-            Controls.Add(buttonDown);
-            Controls.Add(buttonLeft);
-            Controls.Add(buttonUp);
-            Controls.Add(buttonCreate);
-            Controls.Add(pictureBoxAirBomber);
-            Controls.Add(statusStrip1);
-            Name = "FormAirBomber";
-            StartPosition = FormStartPosition.CenterScreen;
-            Text = "Бомбардировщик";
-            statusStrip1.ResumeLayout(false);
-            statusStrip1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxAirBomber).EndInit();
-            ResumeLayout(false);
-            PerformLayout();
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.ClientSize = new System.Drawing.Size(884, 461);
+            this.Controls.Add(this.comboBoxSelectorMap);
+            this.Controls.Add(this.buttonCreateModif);
+            this.Controls.Add(this.buttonRight);
+            this.Controls.Add(this.buttonDown);
+            this.Controls.Add(this.buttonLeft);
+            this.Controls.Add(this.buttonUp);
+            this.Controls.Add(this.buttonCreate);
+            this.Controls.Add(this.pictureBoxAirBomber);
+            this.Controls.Add(this.statusStrip1);
+            this.Name = "FormAirBomber";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
+            this.Text = "Бомбардировщик";
+            this.statusStrip1.ResumeLayout(false);
+            this.statusStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAirBomber)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
+
+        }
+
+        private void ButtonUp_Click(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void ButtonCreate_Click1(object sender, EventArgs e)
+        {
+            throw new NotImplementedException();
         }
 
         #endregion
@@ -185,5 +215,6 @@
         private Button buttonDown;
         private Button buttonRight;
         private Button buttonCreateModif;
+        private ComboBox comboBoxSelectorMap;
     }
 }

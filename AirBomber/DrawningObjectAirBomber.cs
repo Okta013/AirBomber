@@ -18,9 +18,9 @@ namespace AirBomber
         {
             return _airBomber?.GetCurrentPosition() ?? default;
         }
-        public void MoveObject(Direction direction)
+        public void MoveObject(Direction direction, int[,] _map)
         {
-            _airBomber?.MoveAirBomber(direction);
+            _airBomber?.MoveAirBomber(direction, _map);
         }
         public void SetObject(int x, int y, int width, int height)
         {

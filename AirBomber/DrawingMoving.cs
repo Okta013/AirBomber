@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using System.Diagnostics;
+using System.Globalization;
+using static System.Math;
 
 namespace AirBomber
 {
@@ -67,8 +65,8 @@ namespace AirBomber
             {
                 return;
             }
-            _startPosX = x;
-            _startPosY = y;
+            _startPosX = x + 10;
+            _startPosY = y + 35;
             _pictureWidth = width;
             _pictureHeight = height;
         }
@@ -76,44 +74,89 @@ namespace AirBomber
         /// Изменение направления перемещения
         /// </summary>
         /// <param name="direction">Направление</param>
-        public void MoveAirBomber(Direction direction)
+        public void MoveAirBomber(Direction direction, int[,] map)
         {
             if (!_pictureWidth.HasValue || !_pictureHeight.HasValue)
             {
                 return;
             }
+
+            double x_step = (double)_pictureWidth / map.GetLength(0);
+            double y_step = (double)_pictureHeight / map.GetLength(1);
+            int x_bot;
+            int x_top;
+            int y_top;
+            int y_bot;
+
             switch (direction)
             {
                 // вправо
                 case Direction.Right:
-                    if (_startPosX + _airBomberWidth + AirBomber.Step < _pictureWidth)
+                    x_bot = (int)Floor((_startPosX + _airBomberWidth) / x_step);
+                    x_top = (int)Ceiling((_startPosX + _airBomberWidth + AirBomber.Step) / x_step);
+                    y_bot = (int)Floor(_startPosY / y_step);
+                    y_top = (int)Ceiling((_startPosY + _airBomberHeight) / y_step);
+
+                    if (_startPosX + _airBomberWidth + AirBomber.Step < _pictureWidth && HasBreaks(x_bot, x_top, y_bot, y_top, map))
                     {
                         _startPosX += AirBomber.Step;
                     }
                     break;
                 //влево
                 case Direction.Left:
-                    if (_startPosX > AirBomber.Step)
+                    x_bot = (int)Floor((_startPosX - AirBomber.Step) / x_step);
+                    x_top = (int)Floor((_startPosX) / x_step);
+                    y_bot = (int)Floor(_startPosY / y_step);
+                    y_top = (int)Floor((_startPosY + _airBomberHeight) / y_step);
+
+                    if (_startPosX > AirBomber.Step && HasBreaks(x_bot, x_top, y_bot, y_top, map))
                     {
                         _startPosX -= AirBomber.Step;
                     }
                     break;
                 //вверх
                 case Direction.Up:
-                    if (_startPosY > AirBomber.Step)
+                    x_bot = (int)Floor((_startPosX) / x_step);
+                    x_top = (int)Floor((_startPosX + _airBomberWidth) / x_step);
+                    y_bot = (int)Floor((_startPosY - AirBomber.Step) / y_step);
+                    y_top = (int)Floor((_startPosY) / y_step);
+
+                    if (_startPosY > AirBomber.Step && HasBreaks(x_bot, x_top, y_bot, y_top, map))
                     {
                         _startPosY -= AirBomber.Step;
                     }
                     break;
                 //вниз
                 case Direction.Down:
-                    if (_startPosY + _airBomberHeight + AirBomber.Step < _pictureHeight)
+                    x_bot = (int)Floor((_startPosX) / x_step);
+                    x_top = (int)Floor((_startPosX + _airBomberWidth) / x_step);
+                    y_bot = (int)Floor((_startPosY + _airBomberHeight) / y_step);
+                    y_top = (int)Floor((_startPosY + _airBomberHeight + AirBomber.Step) / y_step);
+
+                    if (_startPosY + _airBomberHeight + AirBomber.Step < _pictureHeight && HasBreaks(x_bot, x_top, y_bot, y_top, map))
                     {
                         _startPosY += AirBomber.Step;
                     }
                     break;
             }
         }
+
+        private bool HasBreaks(int x_bot, int x_top, int y_bot, int y_top, int[,] breaks)
+        {
+            for (int i = x_bot; i <= x_top; i++)
+            {
+                for (int j = y_bot; j <= y_top; j++)
+                {
+                    if (breaks[i, j] == 1)
+                    {
+                        return false;
+                    }
+                }
+            }
+
+            return true;
+        }
+
         /// <summary>
         /// Отрисовка бомбардировщика
         /// </summary>

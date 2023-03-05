@@ -8,7 +8,7 @@ namespace AirBomber
 {
     internal abstract class AbstractMap
     {
-        private IDrawningObject _drawningObject = null;
+        protected IDrawningObject _drawningObject = null;
         protected int[,] _map = null;
         protected int _width;
         protected int _height;
@@ -35,7 +35,7 @@ namespace AirBomber
             // TODO проверка, что объект может переместится в требуемом направлении
             if (true)
             {
-                _drawningObject.MoveObject(direction);
+                _drawningObject.MoveObject(direction, _map);
             }
             return DrawMapWithObject();
 
@@ -52,31 +52,7 @@ namespace AirBomber
             // TODO првоерка, что объект не "накладывается" на закрытые участки
             return true;
         }
-        private Bitmap DrawMapWithObject()
-        {
-            Bitmap bmp = new(_width, _height);
-            if (_drawningObject == null || _map == null)
-            {
-                return bmp;
-            }
-            Graphics gr = Graphics.FromImage(bmp);
-            for (int i = 0; i < _map.GetLength(0); ++i)
-            {
-                for (int j = 0; j < _map.GetLength(1); ++j)
-                {
-                    if (_map[i, j] == _freeRoad)
-                    {
-                        DrawRoadPart(gr, i, j);
-                    }
-                    else if (_map[i, j] == _barrier)
-                    {
-                        DrawBarrierPart(gr, i, j);
-                    }
-                }
-            }
-            _drawningObject.DrawningObject(gr);
-            return bmp;
-        }
+        protected abstract Bitmap DrawMapWithObject();
         protected abstract void GenerateMap();
         protected abstract void DrawRoadPart(Graphics g, int i, int j);
         protected abstract void DrawBarrierPart(Graphics g, int i, int j);
