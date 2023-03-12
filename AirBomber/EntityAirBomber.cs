@@ -9,7 +9,7 @@ namespace AirBomber
     /// <summary>
     /// Класс-сущность "Бомбардировщик"
     /// </summary>
-    internal class EntityAirBomber
+    public class EntityAirBomber
     {
         /// <summary>
         /// Скорость бомбардировщика

@@ -9,7 +9,7 @@ namespace AirBomber
     /// <summary>
     /// Интерфейс для работы с объектом, прорисовываемым на форме
     /// </summary>
-    internal interface IDrawningObject
+    public interface IDrawningObject
     {
         /// <summary>
         /// Шаг перемещения объекта

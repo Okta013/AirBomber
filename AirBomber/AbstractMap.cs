@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace AirBomber
 {
-    internal abstract class AbstractMap
+    public abstract class AbstractMap
     {
         protected IDrawningObject _drawningObject = null;
         protected int[,] _map = null;

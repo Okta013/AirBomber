@@ -39,7 +39,7 @@
             this.buttonDown = new System.Windows.Forms.Button();
             this.buttonRight = new System.Windows.Forms.Button();
             this.buttonCreateModif = new System.Windows.Forms.Button();
-            this.comboBoxSelectorMap = new System.Windows.Forms.ComboBox();
+            this.SelectCar = new System.Windows.Forms.Button();
             this.statusStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxAirBomber)).BeginInit();
             this.SuspendLayout();
@@ -93,7 +93,6 @@
             this.buttonCreate.TabIndex = 2;
             this.buttonCreate.Text = "Создать";
             this.buttonCreate.UseVisualStyleBackColor = true;
-            this.buttonCreate.Click += ButtonCreate_Click;
             // 
             // buttonUp
             // 
@@ -105,7 +104,6 @@
             this.buttonUp.Size = new System.Drawing.Size(30, 30);
             this.buttonUp.TabIndex = 3;
             this.buttonUp.UseVisualStyleBackColor = true;
-            this.buttonUp.Click += ButtonMove_Click;
             // 
             // buttonLeft
             // 
@@ -117,7 +115,6 @@
             this.buttonLeft.Size = new System.Drawing.Size(30, 30);
             this.buttonLeft.TabIndex = 4;
             this.buttonLeft.UseVisualStyleBackColor = true;
-            this.buttonLeft.Click += ButtonMove_Click;
             // 
             // buttonDown
             // 
@@ -129,7 +126,6 @@
             this.buttonDown.Size = new System.Drawing.Size(30, 30);
             this.buttonDown.TabIndex = 5;
             this.buttonDown.UseVisualStyleBackColor = true;
-            this.buttonDown.Click += ButtonMove_Click;
             // 
             // buttonRight
             // 
@@ -141,38 +137,33 @@
             this.buttonRight.Size = new System.Drawing.Size(30, 30);
             this.buttonRight.TabIndex = 6;
             this.buttonRight.UseVisualStyleBackColor = true;
-            this.buttonRight.Click += ButtonMove_Click;
             // 
             // buttonCreateModif
             // 
-            this.buttonCreateModif.Anchor = AnchorStyles.Left | AnchorStyles.Bottom;
+            this.buttonCreateModif.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.buttonCreateModif.Location = new System.Drawing.Point(93, 404);
             this.buttonCreateModif.Name = "buttonCreateModif";
             this.buttonCreateModif.Size = new System.Drawing.Size(100, 23);
             this.buttonCreateModif.TabIndex = 7;
             this.buttonCreateModif.Text = "Модификация";
             this.buttonCreateModif.UseVisualStyleBackColor = true;
-            this.buttonCreateModif.Click += ButtonCreateModif_Click;
             // 
-            // comboBoxSelectorMap
+            // SelectCar
             // 
-            this.comboBoxSelectorMap.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxSelectorMap.FormattingEnabled = true;
-            this.comboBoxSelectorMap.Items.AddRange(new object[] {
-            "Простая карта",
-            "Улучшенная карта"});
-            this.comboBoxSelectorMap.Location = new System.Drawing.Point(12, 12);
-            this.comboBoxSelectorMap.Name = "comboBoxSelectorMap";
-            this.comboBoxSelectorMap.Size = new System.Drawing.Size(121, 23);
-            this.comboBoxSelectorMap.TabIndex = 9;
-            this.comboBoxSelectorMap.SelectedIndexChanged += new System.EventHandler(this.ComboBoxSelectorMap_SelectedIndexChanged);
+            this.SelectCar.Location = new System.Drawing.Point(670, 408);
+            this.SelectCar.Name = "SelectCar";
+            this.SelectCar.Size = new System.Drawing.Size(75, 23);
+            this.SelectCar.TabIndex = 10;
+            this.SelectCar.Text = "Выбрать";
+            this.SelectCar.UseVisualStyleBackColor = true;
+            this.SelectCar.Click += new System.EventHandler(this.SelectCar_Click);
             // 
             // FormAirBomber
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(884, 461);
-            this.Controls.Add(this.comboBoxSelectorMap);
+            this.Controls.Add(this.SelectCar);
             this.Controls.Add(this.buttonCreateModif);
             this.Controls.Add(this.buttonRight);
             this.Controls.Add(this.buttonDown);
@@ -215,6 +206,6 @@
         private Button buttonDown;
         private Button buttonRight;
         private Button buttonCreateModif;
-        private ComboBox comboBoxSelectorMap;
+        private Button SelectCar;
     }
 }

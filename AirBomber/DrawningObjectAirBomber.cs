@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace AirBomber
 {
-    internal class DrawningObjectAirBomber : IDrawningObject
+    public class DrawningObjectAirBomber : IDrawningObject
     {
-        private DrawingMoving _airBomber = null;
+        public DrawingMoving _airBomber = null;
         public DrawningObjectAirBomber(DrawingMoving airBomber)
         {
             _airBomber = airBomber;

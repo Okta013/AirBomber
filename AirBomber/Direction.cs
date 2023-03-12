@@ -9,7 +9,7 @@ namespace AirBomber
     /// <summary>
     /// Направление перемещения
     /// </summary>
-    internal enum Direction
+    public enum Direction
     {
         None = 0,
         Up = 1, 

@@ -1,13 +1,11 @@
-﻿using System.Diagnostics;
-using System.Globalization;
-using static System.Math;
+﻿using static System.Math;
 
 namespace AirBomber
 {
     /// <summary>
     /// Класс, отвечающий за прорисовку и перемещение объекта-сущности
     /// </summary>
-    internal class DrawingMoving
+    public class DrawingMoving
     {
         /// <summary>
         /// Класс-сущность
