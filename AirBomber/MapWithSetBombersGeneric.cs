@@ -24,12 +24,12 @@
 
         public static bool operator +(MapWithSetBombersGeneric<T, U> map, T entity)
         {
-            return map.setBombers.Insert(entity, 1); // поменять на список, перегрузки операторов принимают два параметра!!
+            return map.setBombers.Insert(entity);
         }
 
         public static bool operator -(MapWithSetBombersGeneric<T, U> map, int pos)
         {
-            return map.setBombers.Remove(pos); // поменять на список, перегрузки операторов принимают два параметра!!
+            return map.setBombers.Remove(pos);
         }
 
         public Bitmap ShowSet()
@@ -44,13 +44,9 @@
         public Bitmap ShowOnMap()
         {
             Shaking();
-            for (int i = 0; i < setBombers.Count; i++)
+            foreach (var entity in setBombers.GetEntities())
             {
-                var bomber = setBombers.Get(i);
-                if (bomber != null)
-                {
-                    return map.CreateMap(pictureWidth, pictureHeight, bomber);
-                }
+                return map.CreateMap(pictureWidth, pictureHeight, entity);
             }
 
             return new (pictureWidth, pictureHeight);
@@ -70,12 +66,12 @@
             var j = setBombers.Count - 1;
             for (int i = 0; i < setBombers.Count; i++)
             {
-                if (setBombers.Get(i) == null)
+                if (setBombers[i] == null)
                 {
                     for (; j > i; j--)
                     {
-                        var bomber = setBombers.Get(j);
-                        if (bomber != null) 
+                        var bomber = setBombers[j];
+                        if (bomber != null)
                         {
                             setBombers.Insert(bomber, j);
                             setBombers.Remove(j);
@@ -94,7 +90,7 @@
         {
             for (int i = 0; i < setBombers.Count; i++)
             {
-                setBombers.Get(i)?.DrawningObject(graphics);
+                setBombers[i]?.DrawningObject(graphics);
             }
         }
 

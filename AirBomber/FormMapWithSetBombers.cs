@@ -73,10 +73,10 @@
             var name = ((Button)sender)?.Name ?? string.Empty;
             var direct = name switch
             {
-                "buttonUp" => Direction.Up,
-                "buttonDown" => Direction.Down,
-                "buttonLeft" => Direction.Left,
-                "buttonRight" => Direction.Right,
+                "ButtonUp" => Direction.Up,
+                "ButtonDown" => Direction.Down,
+                "ButtonLeft" => Direction.Left,
+                "ButtonRight" => Direction.Right,
                 _ => Direction.None
             };
             PictureBox.Image = mapWithEntities.MoveObject(direct);
