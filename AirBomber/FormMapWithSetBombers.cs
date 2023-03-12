@@ -10,7 +10,8 @@
         {
             AbstractMap map = ComboBox.Text switch
             {
-                "Простая карта" => new SimpleMap()
+                "Простая карта" => new SimpleMap(),
+                "Улучшенная карта" => new ImprovedMap()
             };
 
             mapWithEntities = map != null ? new MapWithSetBombersGeneric<DrawningObjectAirBomber, AbstractMap>(PictureBox.Width, PictureBox.Height, map) : null;
@@ -63,7 +64,7 @@
         private void CheckMap_Click(object sender, EventArgs e)
         {
             if (mapWithEntities == null) return;
-            PictureBox.Image = mapWithEntities.ShowSet();
+            PictureBox.Image = mapWithEntities.ShowOnMap();
         }
 
         private void ButtonMove_Click(object sender, EventArgs e)

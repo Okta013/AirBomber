@@ -115,7 +115,7 @@
             this.AddEntity.TabIndex = 8;
             this.AddEntity.Text = "Добавить сущность";
             this.AddEntity.UseVisualStyleBackColor = true;
-            this.AddEntity.Click += new System.EventHandler(this.AddEntity_Click);
+            this.AddEntity.Click += AddEntity_Click;
             // 
             // ComboBox
             // 
@@ -123,6 +123,7 @@
             this.ComboBox.FormattingEnabled = true;
             this.ComboBox.Location = new System.Drawing.Point(18, 45);
             this.ComboBox.Name = "ComboBox";
+            this.ComboBox.Items.AddRange(new object[] { "Простая карта", "Улучшенная карта" });
             this.ComboBox.Size = new System.Drawing.Size(167, 23);
             this.ComboBox.TabIndex = 1;
             this.ComboBox.SelectedIndexChanged += new System.EventHandler(this.ComboBox_SelectedIndexChanged);
@@ -137,6 +138,7 @@
             this.ButtonRight.Size = new System.Drawing.Size(30, 30);
             this.ButtonRight.TabIndex = 7;
             this.ButtonRight.UseVisualStyleBackColor = true;
+            this.ButtonRight.Click += ButtonMove_Click;
             // 
             // ButtonDown
             // 
@@ -148,6 +150,7 @@
             this.ButtonDown.Size = new System.Drawing.Size(30, 30);
             this.ButtonDown.TabIndex = 6;
             this.ButtonDown.UseVisualStyleBackColor = true;
+            this.ButtonDown.Click += ButtonMove_Click;
             // 
             // ButtonLeft
             // 
@@ -159,6 +162,7 @@
             this.ButtonLeft.Size = new System.Drawing.Size(30, 30);
             this.ButtonLeft.TabIndex = 5;
             this.ButtonLeft.UseVisualStyleBackColor = true;
+            this.ButtonLeft.Click += ButtonMove_Click;
             // 
             // ButtonUp
             // 
@@ -170,6 +174,7 @@
             this.ButtonUp.Size = new System.Drawing.Size(30, 30);
             this.ButtonUp.TabIndex = 4;
             this.ButtonUp.UseVisualStyleBackColor = true;
+            this.ButtonUp.Click += ButtonMove_Click;
             // 
             // PictureBox
             // 

@@ -93,6 +93,7 @@
             this.buttonCreate.TabIndex = 2;
             this.buttonCreate.Text = "Создать";
             this.buttonCreate.UseVisualStyleBackColor = true;
+            this.buttonCreate.Click += ButtonCreate_Click;
             // 
             // buttonUp
             // 
@@ -147,6 +148,7 @@
             this.buttonCreateModif.TabIndex = 7;
             this.buttonCreateModif.Text = "Модификация";
             this.buttonCreateModif.UseVisualStyleBackColor = true;
+            this.buttonCreateModif.Click += ButtonCreateModif_Click;
             // 
             // SelectCar
             // 
