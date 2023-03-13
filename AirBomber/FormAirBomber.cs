@@ -9,10 +9,9 @@ namespace AirBomber
             InitializeComponent();
         }
 
-        private void SetData()
+        private void SetData(int startPosx, int startPosy, int pos = 0)
         {
-            Random rnd = new();
-            _airBomber.SetPosition(rnd.Next(10, 100), rnd.Next(10, 100), pictureBoxAirBomber.Width, pictureBoxAirBomber.Height);
+            _airBomber.SetPosition(startPosx, startPosy, pictureBoxAirBomber.Width, pictureBoxAirBomber.Height);
             toolStripStatusLabelSpeed.Text = $"Скорость: {_airBomber.AirBomber.Speed}";
             toolStripStatusLabelWeight.Text = $"Цвет: {_airBomber.AirBomber.Weight}";
             toolStripStatusLabelBodyColor.Text = $"Вес: {_airBomber.AirBomber.BodyColor.Name}";
@@ -30,7 +29,7 @@ namespace AirBomber
         {
             Random rnd = new();
             _airBomber = new DrawingMoving(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.FromArgb(rnd.Next(0, 256), rnd.Next(0, 256), rnd.Next(0, 256)));
-            SetData();
+            SetData(20, 30);
             Draw();
         }
 
@@ -60,7 +59,7 @@ namespace AirBomber
             Random rnd = new();
             _airBomber = new DrawingImprovedAirBomber(rnd.Next(100, 300), rnd.Next(1000, 2000), Color.FromArgb(rnd.Next(0, 256), rnd.Next(0, 256), rnd.Next(0, 256)),
                 Color.FromArgb(rnd.Next(0, 256), rnd.Next(0, 256), rnd.Next(0, 256)), Convert.ToBoolean(rnd.Next(0, 2)), Convert.ToBoolean(rnd.Next(0, 2)));
-            SetData();
+            SetData(20, 30);
             Draw();
         }
 

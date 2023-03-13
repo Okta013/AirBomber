@@ -14,9 +14,9 @@
 
         public MapWithSetBombersGeneric(int pictureWidth, int pictureHeight, U map)
         {
-            int width = pictureWidth / placeSizeWidth;
-            int height = pictureHeight / placeSizeHeight;
-            setBombers = new SetBombersGeneric<T>(width * height);
+            //int width = pictureWidth / placeSizeWidth;
+            //int height = pictureHeight / placeSizeHeight;
+            setBombers = new SetBombersGeneric<T>(12);
             this.pictureHeight = pictureHeight;
             this.pictureWidth = pictureWidth;
             this.map = map;
@@ -43,13 +43,13 @@
 
         public Bitmap ShowOnMap()
         {
-            Shaking();
-            foreach (var entity in setBombers.GetEntities())
+            // Shaking();
+            /*foreach (var entity in setBombers.GetEntities())
             {
                 return map.CreateMap(pictureWidth, pictureHeight, entity);
-            }
+            }*/
 
-            return new (pictureWidth, pictureHeight);
+            return map.CreateMap(pictureWidth, pictureHeight, setBombers.GetEntities().Last()) ?? new(pictureWidth, pictureHeight);
         }
 
         public Bitmap MoveObject(Direction direction)
@@ -60,8 +60,28 @@
             }
             return new(pictureWidth, pictureHeight);
         }
+        private void DrawEntities(Graphics graphics)
+        {
+            for (int i = 0; i < setBombers.Count; i++)
+            {
+                setBombers[i]?.DrawningObject(graphics, 10, 10, pictureWidth, pictureHeight, i);
+            }
+        }
 
-        private void Shaking() 
+        private void DrawBackground(Graphics graphics)
+        {
+            Pen pen = new (Color.Black, 3);
+            for (int i = 0; i < pictureWidth / placeSizeWidth; i++)
+            {
+                for (int j = 0; j < pictureHeight / placeSizeHeight + 1; ++j)
+                {
+                    graphics.DrawLine(pen, i * placeSizeWidth, j * (placeSizeHeight * 3 / 2), i * placeSizeWidth + placeSizeWidth / 2, j * (placeSizeHeight * 3 / 2));
+                }
+                graphics.DrawLine(pen, i * placeSizeWidth, 0, i * placeSizeWidth, pictureHeight);
+            }
+        }
+        [Obsolete]
+        private void Shaking()
         {
             var j = setBombers.Count - 1;
             for (int i = 0; i < setBombers.Count; i++)
@@ -83,27 +103,6 @@
                         return;
                     }
                 }
-            }
-        }
-
-        private void DrawEntities(Graphics graphics)
-        {
-            for (int i = 0; i < setBombers.Count; i++)
-            {
-                setBombers[i]?.DrawningObject(graphics);
-            }
-        }
-
-        private void DrawBackground(Graphics graphics)
-        {
-            Pen pen = new (Color.Black, 3);
-            for (int i = 0; i < pictureWidth / placeSizeWidth; i++)
-            {
-                for (int j = 0; j < pictureHeight / placeSizeHeight + 1; ++j)
-                {
-                    graphics.DrawLine(pen, i * placeSizeWidth, j * placeSizeHeight, i * placeSizeWidth + placeSizeWidth / 2, j * placeSizeHeight);
-                }
-                graphics.DrawLine(pen, i * placeSizeWidth, 0, i * placeSizeWidth, (pictureHeight / placeSizeHeight) * placeSizeHeight);
             }
         }
     }

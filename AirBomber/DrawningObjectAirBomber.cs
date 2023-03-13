@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -28,6 +29,12 @@ namespace AirBomber
         }
         public void DrawningObject(Graphics g)
         {
+            _airBomber.DrawAirBomber(g);
+        }
+
+        public void DrawningObject(Graphics g, int x, int y, int width, int height, int pos) 
+        {
+            _airBomber.SetPosition(x, y, width, height, pos);
             _airBomber.DrawAirBomber(g);
         }
     }

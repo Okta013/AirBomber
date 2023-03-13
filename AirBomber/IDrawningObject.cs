@@ -33,6 +33,7 @@ namespace AirBomber
         /// </summary>
         /// <param name="g"></param>
         void DrawningObject(Graphics g);
+        void DrawningObject(Graphics g, int x, int y, int width, int height, int pos);
         /// <summary>
         /// Получение текущей позиции объекта
         /// </summary>

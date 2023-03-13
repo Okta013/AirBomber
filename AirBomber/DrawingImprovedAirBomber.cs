@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AirBomber
+﻿namespace AirBomber
 {
     /// <summary>
     /// Класс, отвечающий за прорисовку и перемещение улучшенного объекта-сущности

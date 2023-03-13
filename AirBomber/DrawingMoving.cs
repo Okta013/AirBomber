@@ -14,11 +14,11 @@ namespace AirBomber
         /// <summary>
         /// Левая координата отрисовки бомбардировщика
         /// </summary>
-        protected float _startPosX;
+        public float _startPosX;
         /// <summary>
         /// Верхняя кооридната отрисовки бомбардировщика
         /// </summary>
-        protected float _startPosY;
+        public float _startPosY;
         /// <summary>
         /// Ширина окна отрисовки
         /// </summary>
@@ -57,14 +57,29 @@ namespace AirBomber
             _airBomberWidth = airBomberWidth;
             _airBomberHeight = airBomberHeight;
         }
-        public void SetPosition(int x, int y, int width, int height)
+        public void SetPosition(int x, int y, int width, int height, int pos = 0)
         {
             if (width < _airBomberWidth || height < _airBomberHeight || x > width || y > height)
             {
                 return;
             }
-            _startPosX = x + 10;
-            _startPosY = y + 35;
+
+            if (pos < 4)
+            {
+                _startPosX = x;
+                _startPosY = y + pos * height / 4;
+            }
+            else if (pos < 8) 
+            {
+                _startPosX = x + width * 2 / 7;
+                _startPosY = y + (pos - 4) * height / 4;
+            }
+            else if (pos < 12)
+            {
+                _startPosX = x + width * 4 / 7;
+                _startPosY = y + (pos - 8) * height / 4;
+            }
+
             _pictureWidth = width;
             _pictureHeight = height;
         }
@@ -270,7 +285,7 @@ namespace AirBomber
         /// Получение текущей позиции объекта
         /// </summary>
         /// <returns></returns>
-        public (float Left, float Right, float Top, float Bottom) GetCurrentPosition() 
+        public (float Left, float Right, float Top, float Bottom) GetCurrentPosition()
         {
             return (_startPosX, _startPosY, _startPosX + _airBomberWidth, _startPosY + _airBomberHeight);
         }

@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AirBomber
+﻿namespace AirBomber
 {
     public abstract class AbstractMap
     {
         protected IDrawningObject _drawningObject = null;
-        protected int[,] _map = null;
+        public int[,] _map = null;
         protected int _width;
         protected int _height;
         protected float _size_x;
@@ -17,13 +11,13 @@ namespace AirBomber
         protected readonly Random _random = new();
         protected readonly int _freeRoad = 0;
         protected readonly int _barrier = 1;
-        public Bitmap CreateMap(int width, int height, IDrawningObject drawningObject)
+        public Bitmap CreateMap(int width, int height, IDrawningObject drawningObject, int x = 20, int y = 30)
         {
             _width = width;
             _height = height;
             _drawningObject = drawningObject;
             GenerateMap();
-            while (!SetObjectOnMap())
+            while (!SetObjectOnMap(x, y))
             {
                 GenerateMap();
             }
@@ -40,14 +34,12 @@ namespace AirBomber
             return DrawMapWithObject();
 
         }
-        private bool SetObjectOnMap()
+        private bool SetObjectOnMap(int x = 20, int y = 30)
         {
             if (_drawningObject == null || _map == null)
             {
                 return false;
             }
-            int x = _random.Next(0, 10);
-            int y = _random.Next(0, 10);
             _drawningObject.SetObject(x, y, _width, _height);
             // TODO првоерка, что объект не "накладывается" на закрытые участки
             return true;

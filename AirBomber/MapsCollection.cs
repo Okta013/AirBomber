@@ -20,9 +20,10 @@ namespace AirBomber
             this.pictureHeight = pictureHeight;
         }
 
-        public void AddMap(string name) 
-        {
+        public void AddMap(string name, AbstractMap map) => mapStorage.Add(name, new MapWithSetBombersGeneric<DrawningObjectAirBomber, AbstractMap>(pictureWidth, pictureHeight, map));
 
-        }
+        public void RemoveMap(string name) => mapStorage.Remove(name); // обработка исключений? если попытаться удалить запись по ключу, которого не существует => дропнет исключение
+
+        public MapWithSetBombersGeneric<DrawningObjectAirBomber, AbstractMap> this[string name] => mapStorage[name] ?? null;
     }
 }
