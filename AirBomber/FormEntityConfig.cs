@@ -1,14 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace AirBomber
+﻿namespace AirBomber
 {
     public partial class FormEntityConfig : Form
     {
@@ -97,38 +87,21 @@ namespace AirBomber
 
         private void LabelBaseColor_DragDrop(object sender, DragEventArgs e)
         {
-            BaseColor = (e.Data.GetData(typeof(Color)) as Color?)?.Name switch
-            {
-                "Black" => Color.Black,
-                "Yellow" => Color.Yellow,
-                "Purple" => Color.Purple,
-                "Gray" => Color.Gray,
-                "Lime" => Color.Lime,
-                "Blue" => Color.Blue,
-                "White" => Color.White,
-                "Red" => Color.Red
-            };
-
-            if (entity is DrawingImprovedAirBomber) 
-                entity = new DrawingImprovedAirBomber(
-                    (int)NumericUpDownSpeed.Value,
-                    (int)NumericUpDownWeight.Value,
-                    BaseColor,
-                    AdditionColor,
-                    FuelTanksCheckBox.Checked,
-                    BombsCheckBox.Checked);
-            else 
-                entity = new DrawingMoving(
-                    (int)NumericUpDownSpeed.Value,
-                    (int)NumericUpDownWeight.Value,
-                    BaseColor);
-
+            BaseColor = GetDragDropColor(e);
+            CreateNewInstanceOfEntity();
             Draw();
         }
 
         private void LabelDopColor_DragDrop(object sender, DragEventArgs e)
         {
-            AdditionColor = (e.Data.GetData(typeof(Color)) as Color?)?.Name switch
+            AdditionColor = GetDragDropColor(e);
+            CreateNewInstanceOfEntity();
+            Draw();
+        }
+
+        private Color GetDragDropColor(DragEventArgs e)
+        {
+            return (e.Data.GetData(typeof(Color)) as Color?)?.Name switch
             {
                 "Black" => Color.Black,
                 "Yellow" => Color.Yellow,
@@ -139,7 +112,10 @@ namespace AirBomber
                 "White" => Color.White,
                 "Red" => Color.Red
             };
+        }
 
+        private void CreateNewInstanceOfEntity()
+        {
             if (entity is DrawingImprovedAirBomber)
                 entity = new DrawingImprovedAirBomber(
                     (int)NumericUpDownSpeed.Value,
@@ -153,8 +129,6 @@ namespace AirBomber
                     (int)NumericUpDownSpeed.Value,
                     (int)NumericUpDownWeight.Value,
                     BaseColor);
-
-            Draw();
         }
 
         private void ButtonOk_Click(object sender, EventArgs e)
