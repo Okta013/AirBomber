@@ -133,7 +133,7 @@
 
         private void ButtonOk_Click(object sender, EventArgs e)
         {
-            EventAddEntity?.Invoke(entity);
+            EventAddEntity(entity);
             Close();
         }
 
