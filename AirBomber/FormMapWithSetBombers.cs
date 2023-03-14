@@ -46,22 +46,31 @@
 
         private void AddEntity_Click(object sender, EventArgs e)
         {
+            FormEntityConfig formCarConfig = new();
+            formCarConfig.Show();
+            formCarConfig.AddEvent(AddEntity_Delegate);
+        }
+
+        private void AddEntity_Delegate(DrawingMoving entity)
+        {
             if (ListBoxMaps.SelectedIndex == -1) return;
 
-            FormAirBomber form = new();
-            if (form.ShowDialog() == DialogResult.OK)
+            //FormAirBomber form = new();
+            //if (form.ShowDialog() == DialogResult.OK)
+            //{
+            //DrawningObjectAirBomber airBomber = new(form.SelectedEntity);
+
+            if (mapsCollection[ListBoxMaps.SelectedItem?.ToString() ?? string.Empty] + new DrawningObjectAirBomber(entity))
             {
-                DrawningObjectAirBomber airBomber = new(form.SelectedEntity);
-                if (mapsCollection[ListBoxMaps.SelectedItem?.ToString() ?? string.Empty] + airBomber)
-                {
-                    MessageBox.Show("Объект добавлен");
-                    PictureBox.Image = mapsCollection[ListBoxMaps.SelectedItem?.ToString() ?? string.Empty].ShowSet();
-                }
-                else
-                {   
-                    MessageBox.Show("Не удалось добавить объект");
-                }
+                MessageBox.Show("Объект добавлен");
+                PictureBox.Image = mapsCollection[ListBoxMaps.SelectedItem?.ToString() ?? string.Empty].ShowSet();
             }
+            else
+            {
+                MessageBox.Show("Не удалось добавить объект");
+            }
+
+            //}
         }
 
         private void RemoveEntity_Click(object sender, EventArgs e)
@@ -114,12 +123,12 @@
             var comboBoxText = ComboBox.Text;
             var textBoxText = TextBox.Text;
 
-            if (ComboBox.SelectedIndex == -1 || string.IsNullOrEmpty(textBoxText)) 
+            if (ComboBox.SelectedIndex == -1 || string.IsNullOrEmpty(textBoxText))
             {
                 MessageBox.Show("Не все данные заполненны", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (!mapsDict.ContainsKey(comboBoxText)) 
+            if (!mapsDict.ContainsKey(comboBoxText))
             {
                 MessageBox.Show("Такой карты нет", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
