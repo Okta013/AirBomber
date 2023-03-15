@@ -37,5 +37,8 @@ namespace AirBomber
             _airBomber.SetPosition(x, y, width, height, pos);
             _airBomber.DrawAirBomber(g);
         }
+
+        public string GetInfo() => _airBomber.GetDataForSave();
+        public static IDrawningObject Create(string info) => new DrawningObjectAirBomber(info.CreateEntity());
     }
 }

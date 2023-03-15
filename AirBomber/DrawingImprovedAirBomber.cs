@@ -1,4 +1,6 @@
-﻿namespace AirBomber
+﻿using System.Text;
+
+namespace AirBomber
 {
     /// <summary>
     /// Класс, отвечающий за прорисовку и перемещение улучшенного объекта-сущности

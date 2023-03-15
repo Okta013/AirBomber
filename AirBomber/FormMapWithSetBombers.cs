@@ -152,5 +152,28 @@
                 ReloadMaps();
             }
         }
+
+        private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (SaveFileDialog.ShowDialog() == DialogResult.OK) 
+            {
+                if (mapsCollection.SaveData(SaveFileDialog.FileName)) 
+                    MessageBox.Show("Сохранение прошло успешно", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                else MessageBox.Show("Не удалось сохранить", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void LoadToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (LoadFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                if (mapsCollection.LoadData(LoadFileDialog.FileName))
+                    MessageBox.Show("Загрузка прошла успешно", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                else MessageBox.Show("Не удалось загрузить", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            ReloadMaps();
+        }
     }
 }

@@ -80,6 +80,21 @@
                 graphics.DrawLine(pen, i * placeSizeWidth, 0, i * placeSizeWidth, pictureHeight);
             }
         }
+
+        public string GetData(char separatorType, char separatorData)
+        {
+            string data = $"{map.GetType().Name}{separatorType}";
+
+            foreach (var entity in setBombers.GetEntities()) { data += $"{entity.GetInfo()}{separatorData}"; }
+
+            return data;
+        }
+
+        public void LoadData(string[] records)
+        {
+            foreach (var record in records) { setBombers.Insert(DrawningObjectAirBomber.Create(record) as T); }
+        }
+
         [Obsolete]
         private void Shaking()
         {

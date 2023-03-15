@@ -1,4 +1,6 @@
-﻿using static System.Math;
+﻿using System.Runtime.CompilerServices;
+using System.Text;
+using static System.Math;
 
 namespace AirBomber
 {
@@ -289,6 +291,5 @@ namespace AirBomber
         {
             return (_startPosX, _startPosY, _startPosX + _airBomberWidth, _startPosY + _airBomberHeight);
         }
-
     }
 }
