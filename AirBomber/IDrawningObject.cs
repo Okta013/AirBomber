@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AirBomber
+﻿namespace AirBomber
 {
     /// <summary>
     /// Интерфейс для работы с объектом, прорисовываемым на форме
     /// </summary>
-    public interface IDrawningObject
+    public interface IDrawningObject : IEquatable<IDrawningObject>
     {
         /// <summary>
         /// Шаг перемещения объекта

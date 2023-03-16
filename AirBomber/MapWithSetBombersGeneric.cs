@@ -1,7 +1,7 @@
 ﻿namespace AirBomber
 {
     public class MapWithSetBombersGeneric <T, U>
-        where T : class, IDrawningObject
+        where T : class, IDrawningObject, IEquatable<T>
         where U : AbstractMap
     {
         private readonly int pictureWidth;
@@ -64,7 +64,7 @@
         {
             for (int i = 0; i < setBombers.Count; i++)
             {
-                setBombers[i]?.DrawningObject(graphics, 10, 20, pictureWidth, pictureHeight, i);
+                setBombers[i]?.DrawningObject(graphics, 10, 10, pictureWidth, pictureHeight, i);
             }
         }
 
@@ -93,6 +93,11 @@
         public void LoadData(string[] records)
         {
             foreach (var record in records) { setBombers.Insert(DrawningObjectAirBomber.Create(record) as T); }
+        }
+
+        public void Sort(IComparer<T> comparer)
+        {
+            setBombers.SortSet(comparer);
         }
 
         [Obsolete]

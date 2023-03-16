@@ -1,20 +1,57 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace AirBomber
+﻿namespace AirBomber
 {
     public class DrawningObjectAirBomber : IDrawningObject
     {
         public DrawingMoving _airBomber = null;
+        public float Step => _airBomber?.AirBomber?.Step ?? 0;
+
         public DrawningObjectAirBomber(DrawingMoving airBomber)
         {
             _airBomber = airBomber;
         }
-        public float Step => _airBomber?.AirBomber?.Step ?? 0;
+
+        public DrawingMoving GetEntity => _airBomber;
+
+        public bool Equals(IDrawningObject? other)
+        {
+            if (other == default) return false;
+
+            var otherEntity = other as DrawningObjectAirBomber;
+
+            if (otherEntity == default) return false;
+
+            var entity = _airBomber.AirBomber;
+            var otherEntityEntity = otherEntity._airBomber.AirBomber;
+
+            if (entity.Speed != otherEntityEntity.Speed) return false;
+            if (entity.Weight != otherEntityEntity.Weight) return false;
+            if (entity.BodyColor != otherEntityEntity.BodyColor) return false;
+
+            if (entity is not EntityImprovedAirBomber && otherEntityEntity is not EntityImprovedAirBomber) return true;
+            if (entity is not EntityImprovedAirBomber || otherEntityEntity is not EntityImprovedAirBomber)
+            {
+                if (entity is EntityImprovedAirBomber improvedEntity)
+                {
+                    if (!improvedEntity.Bombs && !improvedEntity.FuelTanks) return true;
+                }
+                if (otherEntityEntity is EntityImprovedAirBomber otherImprovedEntity)
+                {
+                    if (!otherImprovedEntity.Bombs && !otherImprovedEntity.FuelTanks) return true;
+                }
+
+                return false;
+            }
+
+            var improved = entity as EntityImprovedAirBomber;
+            var otherImproved = otherEntityEntity as EntityImprovedAirBomber;
+
+            if (improved.Bombs != otherImproved.Bombs) return false;
+            if (improved.FuelTanks != otherImproved.FuelTanks) return false;
+            if (improved.DopColor != otherImproved.DopColor) return false;
+
+            return true;
+        }
+
         public (float Left, float Right, float Top, float Bottom) GetCurrentPosition()
         {
             return _airBomber?.GetCurrentPosition() ?? default;

@@ -6,18 +6,13 @@ namespace AirBomber
 {
     internal static class Program
     {
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
         [STAThread]
         static void Main()
         {
-            // To customize application configuration such as set high DPI settings or default font,
-            // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             ServiceCollection services = new();
             var config = BuildConfiguration();
-            ConfigureServices(services, config);
+            services.ConfigureServices(config);
 
             using (var scope = services.BuildServiceProvider())
             {
@@ -25,7 +20,7 @@ namespace AirBomber
             }
         }
 
-        private static void ConfigureServices(IServiceCollection services, IConfiguration configuration)
+        private static void ConfigureServices(this IServiceCollection services, IConfiguration configuration)
         {
             Log.Logger = new LoggerConfiguration()
                 .ReadFrom.Configuration(configuration)

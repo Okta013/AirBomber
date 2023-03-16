@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.Tools = new System.Windows.Forms.GroupBox();
+            this.SortByTypeButton = new System.Windows.Forms.Button();
+            this.SortByColorButton = new System.Windows.Forms.Button();
             this.Maps = new System.Windows.Forms.GroupBox();
             this.ListBoxMaps = new System.Windows.Forms.ListBox();
             this.DeleteMap = new System.Windows.Forms.Button();
@@ -59,6 +61,8 @@
             // 
             // Tools
             // 
+            this.Tools.Controls.Add(this.SortByTypeButton);
+            this.Tools.Controls.Add(this.SortByColorButton);
             this.Tools.Controls.Add(this.Maps);
             this.Tools.Controls.Add(this.MaskedTextBox);
             this.Tools.Controls.Add(this.RemoveEntity);
@@ -72,10 +76,30 @@
             this.Tools.Dock = System.Windows.Forms.DockStyle.Right;
             this.Tools.Location = new System.Drawing.Point(754, 24);
             this.Tools.Name = "Tools";
-            this.Tools.Size = new System.Drawing.Size(197, 525);
+            this.Tools.Size = new System.Drawing.Size(197, 559);
             this.Tools.TabIndex = 0;
             this.Tools.TabStop = false;
             this.Tools.Text = "Инструменты";
+            // 
+            // SortByTypeButton
+            // 
+            this.SortByTypeButton.Location = new System.Drawing.Point(18, 232);
+            this.SortByTypeButton.Name = "SortByTypeButton";
+            this.SortByTypeButton.Size = new System.Drawing.Size(161, 30);
+            this.SortByTypeButton.TabIndex = 3;
+            this.SortByTypeButton.Text = "Сортировка по типу";
+            this.SortByTypeButton.UseVisualStyleBackColor = true;
+            this.SortByTypeButton.Click += new System.EventHandler(this.SortByTypeButton_Click);
+            // 
+            // SortByColorButton
+            // 
+            this.SortByColorButton.Location = new System.Drawing.Point(18, 268);
+            this.SortByColorButton.Name = "SortByColorButton";
+            this.SortByColorButton.Size = new System.Drawing.Size(161, 30);
+            this.SortByColorButton.TabIndex = 4;
+            this.SortByColorButton.Text = "Сортировка по цвету";
+            this.SortByColorButton.UseVisualStyleBackColor = true;
+            this.SortByColorButton.Click += new System.EventHandler(this.SortByColorButton_Click);
             // 
             // Maps
             // 
@@ -143,18 +167,18 @@
             // MaskedTextBox
             // 
             this.MaskedTextBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.MaskedTextBox.Location = new System.Drawing.Point(18, 273);
+            this.MaskedTextBox.Location = new System.Drawing.Point(18, 336);
             this.MaskedTextBox.Mask = "00";
             this.MaskedTextBox.Name = "MaskedTextBox";
-            this.MaskedTextBox.Size = new System.Drawing.Size(167, 23);
+            this.MaskedTextBox.Size = new System.Drawing.Size(161, 23);
             this.MaskedTextBox.TabIndex = 12;
             // 
             // RemoveEntity
             // 
             this.RemoveEntity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.RemoveEntity.Location = new System.Drawing.Point(18, 302);
+            this.RemoveEntity.Location = new System.Drawing.Point(18, 365);
             this.RemoveEntity.Name = "RemoveEntity";
-            this.RemoveEntity.Size = new System.Drawing.Size(167, 30);
+            this.RemoveEntity.Size = new System.Drawing.Size(161, 30);
             this.RemoveEntity.TabIndex = 11;
             this.RemoveEntity.Text = "Удалить сущность";
             this.RemoveEntity.UseVisualStyleBackColor = true;
@@ -163,9 +187,9 @@
             // CheckMap
             // 
             this.CheckMap.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CheckMap.Location = new System.Drawing.Point(18, 374);
+            this.CheckMap.Location = new System.Drawing.Point(18, 437);
             this.CheckMap.Name = "CheckMap";
-            this.CheckMap.Size = new System.Drawing.Size(167, 30);
+            this.CheckMap.Size = new System.Drawing.Size(161, 30);
             this.CheckMap.TabIndex = 10;
             this.CheckMap.Text = "Посмотреть карту";
             this.CheckMap.UseVisualStyleBackColor = true;
@@ -174,9 +198,9 @@
             // CheckBox
             // 
             this.CheckBox.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.CheckBox.Location = new System.Drawing.Point(18, 338);
+            this.CheckBox.Location = new System.Drawing.Point(18, 401);
             this.CheckBox.Name = "CheckBox";
-            this.CheckBox.Size = new System.Drawing.Size(167, 30);
+            this.CheckBox.Size = new System.Drawing.Size(161, 30);
             this.CheckBox.TabIndex = 9;
             this.CheckBox.Text = "Посмотреть хранилище";
             this.CheckBox.UseVisualStyleBackColor = true;
@@ -185,9 +209,9 @@
             // AddEntity
             // 
             this.AddEntity.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.AddEntity.Location = new System.Drawing.Point(18, 237);
+            this.AddEntity.Location = new System.Drawing.Point(18, 300);
             this.AddEntity.Name = "AddEntity";
-            this.AddEntity.Size = new System.Drawing.Size(167, 30);
+            this.AddEntity.Size = new System.Drawing.Size(161, 30);
             this.AddEntity.TabIndex = 8;
             this.AddEntity.Text = "Добавить сущность";
             this.AddEntity.UseVisualStyleBackColor = true;
@@ -198,7 +222,7 @@
             this.ButtonRight.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ButtonRight.BackgroundImage = global::AirBomber.Properties.Resources.right;
             this.ButtonRight.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ButtonRight.Location = new System.Drawing.Point(128, 483);
+            this.ButtonRight.Location = new System.Drawing.Point(128, 517);
             this.ButtonRight.Name = "ButtonRight";
             this.ButtonRight.Size = new System.Drawing.Size(30, 30);
             this.ButtonRight.TabIndex = 7;
@@ -210,7 +234,7 @@
             this.ButtonDown.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ButtonDown.BackgroundImage = global::AirBomber.Properties.Resources.down;
             this.ButtonDown.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ButtonDown.Location = new System.Drawing.Point(92, 483);
+            this.ButtonDown.Location = new System.Drawing.Point(92, 517);
             this.ButtonDown.Name = "ButtonDown";
             this.ButtonDown.Size = new System.Drawing.Size(30, 30);
             this.ButtonDown.TabIndex = 6;
@@ -222,7 +246,7 @@
             this.ButtonLeft.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ButtonLeft.BackgroundImage = global::AirBomber.Properties.Resources.left;
             this.ButtonLeft.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ButtonLeft.Location = new System.Drawing.Point(56, 483);
+            this.ButtonLeft.Location = new System.Drawing.Point(56, 517);
             this.ButtonLeft.Name = "ButtonLeft";
             this.ButtonLeft.Size = new System.Drawing.Size(30, 30);
             this.ButtonLeft.TabIndex = 5;
@@ -234,7 +258,7 @@
             this.ButtonUp.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.ButtonUp.BackgroundImage = global::AirBomber.Properties.Resources.up;
             this.ButtonUp.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom;
-            this.ButtonUp.Location = new System.Drawing.Point(92, 447);
+            this.ButtonUp.Location = new System.Drawing.Point(92, 481);
             this.ButtonUp.Name = "ButtonUp";
             this.ButtonUp.Size = new System.Drawing.Size(30, 30);
             this.ButtonUp.TabIndex = 4;
@@ -246,7 +270,7 @@
             this.PictureBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.PictureBox.Location = new System.Drawing.Point(0, 24);
             this.PictureBox.Name = "PictureBox";
-            this.PictureBox.Size = new System.Drawing.Size(754, 525);
+            this.PictureBox.Size = new System.Drawing.Size(754, 559);
             this.PictureBox.TabIndex = 1;
             this.PictureBox.TabStop = false;
             // 
@@ -295,7 +319,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(951, 549);
+            this.ClientSize = new System.Drawing.Size(951, 583);
             this.Controls.Add(this.PictureBox);
             this.Controls.Add(this.Tools);
             this.Controls.Add(this.MenuStrip);
@@ -338,5 +362,7 @@
         private ToolStripMenuItem LoadToolStripMenuItem;
         private OpenFileDialog LoadFileDialog;
         private SaveFileDialog SaveFileDialog;
+        private Button SortByColorButton;
+        private Button SortByTypeButton;
     }
 }

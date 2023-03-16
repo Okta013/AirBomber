@@ -194,5 +194,21 @@ namespace AirBomber
             }
             ReloadMaps();
         }
+
+        private void SortByTypeButton_Click(object sender, EventArgs e)
+        {
+            if (ListBoxMaps.SelectedIndex == -1) return;
+
+            mapsCollection[ListBoxMaps.SelectedItem?.ToString() ?? string.Empty].Sort(new EntityCompareByType());
+            PictureBox.Image = mapsCollection[ListBoxMaps.SelectedItem?.ToString() ?? string.Empty].ShowSet();
+        }
+
+        private void SortByColorButton_Click(object sender, EventArgs e)
+        {
+            if (ListBoxMaps.SelectedIndex == -1) return;
+
+            mapsCollection[ListBoxMaps.SelectedItem?.ToString() ?? string.Empty].Sort(new EntityCompareByColor());
+            PictureBox.Image = mapsCollection[ListBoxMaps.SelectedItem?.ToString() ?? string.Empty].ShowSet();
+        }
     }
 }

@@ -1,7 +1,7 @@
 ﻿namespace AirBomber
 {
     public class SetBombersGeneric<T>
-        where T : class
+        where T : class, IEquatable<T>
     {
         private readonly List<T> entities;
         public int Count => entities.Count;
@@ -16,6 +16,7 @@
         [Obsolete]
         public bool Insert(T entity, int pos)
         {
+            if (entities.Contains(entity)) return false;
             if (pos >= maxCount) return false;
             entities[pos - 1] = entity;
             return true;
@@ -23,6 +24,7 @@
 
         public bool Insert(T entity)
         {
+            if (entities.Contains(entity)) return false;
             if (entities.Count == maxCount) return false;
             entities.Add(entity);
             return true;
@@ -52,6 +54,13 @@
         public IList<T> GetEntities()
         {
             return entities;
+        }
+
+        public void SortSet(IComparer<T> comparer)
+        {
+            if (comparer == default) return;
+
+            entities.Sort(comparer);
         }
 
         //[Obsolete] // метод не имеет смысла, тк удаление с помощью RemoveAt сдвигает список
