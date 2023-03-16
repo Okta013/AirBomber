@@ -1,8 +1,12 @@
-﻿namespace AirBomber
+﻿using AirBomber.Exceptions;
+using Serilog;
+
+namespace AirBomber
 {
     public partial class FormMapWithSetBombers : Form
     {
         private readonly MapsCollection mapsCollection;
+        private readonly ILogger logger;
 
         private readonly Dictionary<string, AbstractMap> mapsDict = new()
         {
@@ -10,9 +14,10 @@
             { "Улучшенная карта", new ImprovedMap() }
         };
 
-        public FormMapWithSetBombers()
+        public FormMapWithSetBombers(ILogger logger)
         {
             InitializeComponent();
+            this.logger = logger;
             mapsCollection = new(PictureBox.Width, PictureBox.Height);
             ComboBox.Items.Clear();
 
@@ -55,11 +60,6 @@
         {
             if (ListBoxMaps.SelectedIndex == -1) return;
 
-            //FormAirBomber form = new();
-            //if (form.ShowDialog() == DialogResult.OK)
-            //{
-            //DrawningObjectAirBomber airBomber = new(form.SelectedEntity);
-
             if (mapsCollection[ListBoxMaps.SelectedItem?.ToString() ?? string.Empty] + new DrawningObjectAirBomber(entity))
             {
                 MessageBox.Show("Объект добавлен");
@@ -69,8 +69,6 @@
             {
                 MessageBox.Show("Не удалось добавить объект");
             }
-
-            //}
         }
 
         private void RemoveEntity_Click(object sender, EventArgs e)
@@ -80,14 +78,22 @@
 
             int pos = Convert.ToInt32(MaskedTextBox.Text);
 
-            if (mapsCollection[ListBoxMaps.SelectedItem?.ToString() ?? string.Empty] - pos)
+            try
             {
-                MessageBox.Show("Объект удалён");
-                PictureBox.Image = mapsCollection[ListBoxMaps.SelectedItem?.ToString() ?? string.Empty].ShowSet();
+                if (mapsCollection[ListBoxMaps.SelectedItem?.ToString() ?? string.Empty] - pos)
+                {
+                    MessageBox.Show("Объект удалён");
+                    PictureBox.Image = mapsCollection[ListBoxMaps.SelectedItem?.ToString() ?? string.Empty].ShowSet();
+                }
+                else
+                {
+                    MessageBox.Show("Не удалось удалить объект");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Не удалось удалить объект");
+                if (ex is EntityNotFoundException) MessageBox.Show($"Ошибка удаления: {ex.Message}");
+                else MessageBox.Show($"Неизвестная ошибка: {ex.Message}");
             }
         }
 
@@ -136,6 +142,7 @@
 
             mapsCollection.AddMap(textBoxText, mapsDict[comboBoxText]);
             ReloadMaps();
+            logger.Information($"Добавлена карта: {textBoxText}");
         }
 
         private void ListBoxMaps_SelectedIndexChanged(object sender, EventArgs e)
@@ -157,10 +164,15 @@
         {
             if (SaveFileDialog.ShowDialog() == DialogResult.OK) 
             {
-                if (mapsCollection.SaveData(SaveFileDialog.FileName)) 
+                try
+                {
+                    mapsCollection.SaveData(SaveFileDialog.FileName);
                     MessageBox.Show("Сохранение прошло успешно", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                else MessageBox.Show("Не удалось сохранить", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Не удалось сохранить: {ex.Message}", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
         }
 
@@ -168,10 +180,17 @@
         {
             if (LoadFileDialog.ShowDialog() == DialogResult.OK)
             {
-                if (mapsCollection.LoadData(LoadFileDialog.FileName))
+                try
+                {
+                    mapsCollection.LoadData(LoadFileDialog.FileName);
                     MessageBox.Show("Загрузка прошла успешно", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                else MessageBox.Show("Не удалось загрузить", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show($"Не удалось загрузить: {ex.Message}", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
             }
             ReloadMaps();
         }

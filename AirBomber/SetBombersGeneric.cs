@@ -13,6 +13,7 @@
             entities = new();
         }
 
+        [Obsolete]
         public bool Insert(T entity, int pos)
         {
             if (pos >= maxCount) return false;

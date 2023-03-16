@@ -24,6 +24,7 @@ namespace AirBomber
         public static DrawingMoving CreateEntity(this string info)
         {
             var strs = info.Split(separator);
+
             if (strs.Length == 3) 
                 return new DrawingMoving(
                     int.Parse(strs[0]), 

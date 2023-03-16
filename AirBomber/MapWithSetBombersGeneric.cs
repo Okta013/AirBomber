@@ -64,7 +64,7 @@
         {
             for (int i = 0; i < setBombers.Count; i++)
             {
-                setBombers[i]?.DrawningObject(graphics, 10, 10, pictureWidth, pictureHeight, i);
+                setBombers[i]?.DrawningObject(graphics, 10, 20, pictureWidth, pictureHeight, i);
             }
         }
 
