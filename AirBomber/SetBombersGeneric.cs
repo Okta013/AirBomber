@@ -1,4 +1,7 @@
-﻿namespace AirBomber
+﻿using AirBomber.Exceptions;
+using System.Net.Http.Headers;
+
+namespace AirBomber
 {
     public class SetBombersGeneric<T>
         where T : class, IEquatable<T>
@@ -24,8 +27,8 @@
 
         public bool Insert(T entity)
         {
+            if (entities.Count == maxCount) throw new StorageOverflowException(maxCount);
             if (entities.Contains(entity)) return false;
-            if (entities.Count == maxCount) return false;
             entities.Add(entity);
             return true;
         }
@@ -33,7 +36,7 @@
         public bool Remove(int pos) 
         {
             if (pos >= maxCount) return false;
-            if (entities[pos - 1] == null) return false;
+            if (entities[pos - 1] == null) throw new EntityNotFoundException(pos);
             entities.RemoveAt(pos - 1);
             return true;
         }

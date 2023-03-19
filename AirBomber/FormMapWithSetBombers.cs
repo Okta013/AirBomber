@@ -60,14 +60,22 @@ namespace AirBomber
         {
             if (ListBoxMaps.SelectedIndex == -1) return;
 
-            if (mapsCollection[ListBoxMaps.SelectedItem?.ToString() ?? string.Empty] + new DrawningObjectAirBomber(entity))
+            try
             {
-                MessageBox.Show("Объект добавлен");
-                PictureBox.Image = mapsCollection[ListBoxMaps.SelectedItem?.ToString() ?? string.Empty].ShowSet();
+                if (mapsCollection[ListBoxMaps.SelectedItem?.ToString() ?? string.Empty] + new DrawningObjectAirBomber(entity))
+                {
+                    MessageBox.Show("Объект добавлен");
+                    PictureBox.Image = mapsCollection[ListBoxMaps.SelectedItem?.ToString() ?? string.Empty].ShowSet();
+                }
+                else
+                {
+                    MessageBox.Show("Не удалось добавить объект");
+                }
             }
-            else
+            catch (Exception ex)
             {
-                MessageBox.Show("Не удалось добавить объект");
+                if (ex is StorageOverflowException) MessageBox.Show($"Ошибка добавления: {ex.Message}");
+                else MessageBox.Show($"Неизвестная ошибка: {ex.Message}");
             }
         }
 
