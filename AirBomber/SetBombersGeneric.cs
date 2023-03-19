@@ -36,7 +36,7 @@ namespace AirBomber
         public bool Remove(int pos) 
         {
             if (pos >= maxCount) return false;
-            if (entities[pos - 1] == null) throw new EntityNotFoundException(pos);
+            if (entities.Count < pos) throw new EntityNotFoundException(pos);
             entities.RemoveAt(pos - 1);
             return true;
         }
