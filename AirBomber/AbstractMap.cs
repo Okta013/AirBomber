@@ -1,6 +1,6 @@
 ﻿namespace AirBomber
 {
-    public abstract class AbstractMap
+    public abstract class AbstractMap : IEquatable<AbstractMap>
     {
         protected IDrawningObject _drawningObject = null;
         public int[,] _map = null;
@@ -48,5 +48,23 @@
         protected abstract void GenerateMap();
         protected abstract void DrawRoadPart(Graphics g, int i, int j);
         protected abstract void DrawBarrierPart(Graphics g, int i, int j);
+
+        public bool Equals(AbstractMap? other)
+        {
+            if (other._width != _width) return false;
+            if (other._height != _height) return false;
+            if (other._size_x != _size_x) return false;
+            if (other._size_y != _size_y) return false;
+
+            for (int i = 0; i < _map.GetLength(0); i++)
+            {
+                for (int j = 0; j < _map.GetLength(1); j++)
+                {
+                    if (other._map[i, j] != _map[i, j]) return false;
+                }
+            }
+
+            return true;
+        }
     }
 }
