@@ -66,16 +66,26 @@ namespace AirBomber
                 {
                     MessageBox.Show("Объект добавлен");
                     PictureBox.Image = mapsCollection[ListBoxMaps.SelectedItem?.ToString() ?? string.Empty].ShowSet();
+                    logger.Information("Добавлен объект");
                 }
                 else
                 {
                     MessageBox.Show("Не удалось добавить объект");
+                    logger.Warning("Не удалось добавить объект");
                 }
             }
             catch (Exception ex)
             {
-                if (ex is StorageOverflowException) MessageBox.Show($"Ошибка добавления: {ex.Message}");
-                else MessageBox.Show($"Неизвестная ошибка: {ex.Message}");
+                if (ex is StorageOverflowException)
+                {
+                    MessageBox.Show($"Ошибка добавления: {ex.Message}");
+                    logger.Warning(ex, $"Ошибка добавления: {ex.Message}");
+                }
+                else
+                {
+                    MessageBox.Show($"Неизвестная ошибка: {ex.Message}");
+                    logger.Warning(ex, $"Неизвестная ошибка: {ex.Message}");
+                }
             }
         }
 
@@ -92,16 +102,26 @@ namespace AirBomber
                 {
                     MessageBox.Show("Объект удалён");
                     PictureBox.Image = mapsCollection[ListBoxMaps.SelectedItem?.ToString() ?? string.Empty].ShowSet();
+                    logger.Information("Объект удалён");
                 }
                 else
                 {
                     MessageBox.Show("Не удалось удалить объект");
+                    logger.Warning("Не удалось удалить объект");
                 }
             }
             catch (Exception ex)
             {
-                if (ex is EntityNotFoundException) MessageBox.Show($"Ошибка удаления: {ex.Message}");
-                else MessageBox.Show($"Неизвестная ошибка: {ex.Message}");
+                if (ex is EntityNotFoundException)
+                {
+                    MessageBox.Show($"Ошибка удаления: {ex.Message}");
+                    logger.Warning(ex, $"Ошибка удаления: {ex.Message}");
+                }
+                else
+                {
+                    MessageBox.Show($"Неизвестная ошибка: {ex.Message}");
+                    logger.Warning(ex, $"Неизвестная ошибка: {ex.Message}");
+                }
             }
         }
 
@@ -140,30 +160,36 @@ namespace AirBomber
             if (ComboBox.SelectedIndex == -1 || string.IsNullOrEmpty(textBoxText))
             {
                 MessageBox.Show("Не все данные заполненны", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                logger.Warning("Не все данные заполненны");
                 return;
             }
             if (!mapsDict.ContainsKey(comboBoxText))
             {
                 MessageBox.Show("Такой карты нет", "Ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                logger.Warning("Такой карты нет");
                 return;
             }
 
             mapsCollection.AddMap(textBoxText, mapsDict[comboBoxText]);
-            ReloadMaps();
             logger.Information($"Добавлена карта: {textBoxText}");
+            ReloadMaps();
         }
 
         private void ListBoxMaps_SelectedIndexChanged(object sender, EventArgs e)
         {
+            var map = ListBoxMaps.SelectedItem?.ToString();
             PictureBox.Image = mapsCollection[ListBoxMaps.SelectedItem?.ToString() ?? string.Empty].ShowSet();
+            logger.Information($"Переход на карту: {map}");
         }
 
         private void DeleteMap_Click(object sender, EventArgs e)
         {
+            var map = ListBoxMaps.SelectedItem;
             if (ListBoxMaps.SelectedIndex == -1) return;
             if (MessageBox.Show($"Удалить карту {ListBoxMaps.SelectedItem}?", "Удаление", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 mapsCollection.RemoveMap(ListBoxMaps.SelectedItem?.ToString() ?? string.Empty);
+                logger.Information($"Карта удалена: {map}");
                 ReloadMaps();
             }
         }
@@ -176,10 +202,12 @@ namespace AirBomber
                 {
                     mapsCollection.SaveData(SaveFileDialog.FileName);
                     MessageBox.Show("Сохранение прошло успешно", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    logger.Information("Сохранение прошло успешно");
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show($"Не удалось сохранить: {ex.Message}", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    logger.Warning(ex, $"Не удалось сохранить: {ex.Message}");
                 }
             }
         }
@@ -192,12 +220,12 @@ namespace AirBomber
                 {
                     mapsCollection.LoadData(LoadFileDialog.FileName);
                     MessageBox.Show("Загрузка прошла успешно", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-                    
+                    logger.Information("Загрузка прошла успешно");
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show($"Не удалось загрузить: {ex.Message}", "Результат", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    logger.Warning(ex, $"Не удалось загрузить: {ex.Message}");
                 }
             }
             ReloadMaps();
